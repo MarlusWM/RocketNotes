@@ -14,7 +14,7 @@ export function Home() {
             <h1>RocketNotes</h1>
          </Brand>
 
-         <Header></Header>
+         <Header/>
 
          <Menu>
             <li>
@@ -42,7 +42,7 @@ export function Home() {
             </Section>
          </Content>
 
-         <NewNote>
+         <NewNote to='/new'>
             <FiPlus/>
             Cria Nota
          </NewNote>

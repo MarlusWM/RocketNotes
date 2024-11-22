@@ -5,7 +5,7 @@ import { Section } from '../../components/Section/section.jsx';
 import { ButtonText } from '../../components/ButtonText/index.jsx'
 import { Tag } from '../../components/Tag/index.jsx'
 
-function Details() {
+export function Details() {
 
      return (
           <Container>

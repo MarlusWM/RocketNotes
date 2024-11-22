@@ -5,7 +5,7 @@ import { RiShutDownLine } from '@react-icons/all-files/ri/RiShutDownLine'
 export function Header(){
      return(
           <Container>
-               <Profile>                    
+               <Profile to='/profile'>                    
                     <img src='https://github.com/marluswm.png' alt='Foto usuário'/>
 
                     <div>
