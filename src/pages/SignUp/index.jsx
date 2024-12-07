@@ -18,6 +18,10 @@ export function SignUp(){
    const [password, setPassword]= useState('');
    const navigate = useNavigate;
 
+   function handleBack(){
+      navigate(-1);
+   }
+
    function handleSignUp(){
       if (!name || !email || !password) {
          return alert('Preenche todos os campos');
@@ -26,7 +30,7 @@ export function SignUp(){
       api.post('/user', {name, email, password})
       .then(() => {
          alert('Usuário cadastrado com sucesso!');
-         navigate('/');
+         handleBack();
       })
       .catch(err => {
          if (err.response) {
@@ -52,7 +56,7 @@ export function SignUp(){
             <Input placeholder='senha' type='password' icon={FiLock} onChange={e => setPassword(e.target.value)}/>
             <Button title={'Cadastrar'} onClick={handleSignUp}/>
 
-            <Link to='/'>Voltar para login</Link>
+            <Link onClick={handleBack}>Voltar para login</Link>
          </Form>
       </Container>
    )
