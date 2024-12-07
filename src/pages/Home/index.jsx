@@ -6,8 +6,23 @@ import { FiSearch} from '@react-icons/all-files/fi/FiSearch'
 import { Input } from '../../components/Input/index'
 import { Section } from '../../components/Section/section'
 import { Note } from '../../components/Note/index'
+import { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 
 export function Home() {
+
+   const [tags, setTags] = useState([]);
+
+   useEffect(() => {
+      async function fetchTags() {
+         const response = await api.get('/tags');
+         setTags(response.data);
+      }
+
+      fetchTags();
+
+   }, []);
+
    return(
       <Container>
          <Brand>
@@ -17,15 +32,15 @@ export function Home() {
          <Header/>
 
          <Menu>
-            <li>
-               <ButtonText title='Todos' isActive />
-            </li>
-            <li>
-               <ButtonText title='RectJS'/>
-            </li>
-            <li>
-               <ButtonText title='NodeJS'/>
-            </li>
+            <li><ButtonText title='Todos' isActive /></li>
+
+            {
+               tags && tags.map(tag => (
+                  <li key={String(tag.id)}>
+                     <ButtonText title={tag.name}/>
+                  </li>
+               ))
+            }
          </Menu>
 
          <Search>
